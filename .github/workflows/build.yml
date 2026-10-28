@@ -1,0 +1,23 @@
+name: Unity Android Build Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Check Unity Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check project files
+        run: |
+          echo "Checking DesertKingdom repository..."
+          if [ -f ProjectSettings/ProjectVersion.txt ] && [ -d Assets ]; then
+            echo "Unity project files found."
+          else
+            echo "Unity project files are not present yet."
+            echo "This is only a repository setup test."
+          fi
